@@ -1,25 +1,17 @@
 import React from 'react';
-import './App.css';
+import ProductDetail from './ProductDetail';
 
-function Body({ items, handleCheckboxChange }) {
+function Body({ items, handleCheckboxChange, onAddComment }) {
   return (
     <div className="body">
-        <div className='bodydiv'>
-            <h2>List of Product</h2>
-            <dl>
-                {items.map((item) => (
-                <dd key={item.id}>
-                    <input
-                    type="checkbox"
-                    checked={item.checked}
-                    onChange={() => handleCheckboxChange(item.id)}
-                    />
-                {item.name}
-                </dd>
-                ))}
-            </dl>
+      <div className="bodydiv">
+        <h2>List of Products</h2>
+        {items.map((item) => (
+          <ProductDetail key={item.id} product={item} onAddComment={onAddComment} />
+        ))}
       </div>
     </div>
   );
 }
+
 export default Body;
